@@ -1,4 +1,5 @@
 import dataProcesser as DP
+import TFIDF as TI
 
 
 ieee_paper_data = """
@@ -43,3 +44,5 @@ classified_data=DP.getClassifiedData(ieee_paper_data) #This is the data classifi
 classified_data={"Introduction":classified_data[0],"Related Work":classified_data[1],"Methodology":classified_data[2],"Discussion":classified_data[3],"Conclusion":classified_data[4]}
 #print(classified_data)
 
+Summarized_data=TI.tfidfVector(ieee_paper_data,classified_data,DP.getAllLines(ieee_paper_data))
+print(Summarized_data["Related Work"])
