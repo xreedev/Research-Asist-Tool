@@ -1,30 +1,35 @@
 import re
-new_data=[]
-all_words=[]
-all_lines=[]
 
-
-def processData(ieee_paper_data):
-    global new_data
-    global all_lines
-    global all_words
-    new_data=re.split(r"\b\d+\.\s*(?:Introduction|Related Work|Methodology|Results|Discussion|Conclusion)",ieee_paper_data)[1:]
-    all_words=ieee_paper_data.split()
-    all_lines=ieee_paper_data.split(".")
-
-def getClassifiedData(ieee_paper_data):
-    processData(ieee_paper_data)
-    return new_data
+def removeStopWords(data,stop_words):
+    clean_data=""
+    all_words = data.split()
+    for word in all_words:
+        if word.lower() not in stop_words:
+            clean_data+=word
+            clean_data+=" "
+    return clean_data
 
 def getAllWords(ieee_paper_data):
-    processData(ieee_paper_data)
+    all_words=ieee_paper_data.split()
     return all_words
 
 def getAllLines(ieee_paper_data):
-    processData(ieee_paper_data)
+    all_lines = ieee_paper_data.split(".")
     return all_lines
 
-
-
 sections = "\n0.Introduction\n1.Related Work\n2.Methodology\n3.Discussion\n4.Conclusion"
-#done
+
+def classify(ieee_paper_data):
+    classified_data=re.split(r"\b\d+\.\s*(?:Introduction|Related Work|Methodology|Results|Discussion|Conclusion)",ieee_paper_data)[1:]
+    classified_dataset = {"Introduction": classified_data[0], "Related Work": classified_data[1],
+                          "Methodology": classified_data[2], "Discussion": classified_data[3],
+                          "Conclusion": classified_data[4]}
+
+
+    return classified_dataset
+def cleanData(ieee_paper_data,stop_words):
+    clean_data = re.split(r"\b\d+\.\s*(?:Introduction|Related Work|Methodology|Results|Discussion|Conclusion)",
+                          removeStopWords(ieee_paper_data, stop_words))[1:]
+    clean_dataset = {"Introduction": clean_data[0], "Related Work": clean_data[1], "Methodology": clean_data[2],
+                     "Discussion": clean_data[3], "Conclusion": clean_data[4]}
+    return clean_dataset

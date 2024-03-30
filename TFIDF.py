@@ -1,4 +1,4 @@
-def tfidfVector(ieee_paper_data,classified_data,all_lines):
+def tfidfVectorise(ieee_paper_data,clean_data,all_lines,classified_data):
     class Line:
         def __init__(self, line):
             self.line = line  # The actual line text
@@ -35,7 +35,7 @@ def tfidfVector(ieee_paper_data,classified_data,all_lines):
     lines_list = []
 
     # Loop through each data
-    for value in classified_data.values():
+    for value in clean_data.values():
         sec_lines = value.split(".")  # Split data into sentences
         # Loop through each line in the data
         for lines in sec_lines:
@@ -54,7 +54,7 @@ def tfidfVector(ieee_paper_data,classified_data,all_lines):
     filtered_data = {}
 
     # Loop through each section in classified_data
-    for section, value in classified_data.items():
+    for section, value in clean_data.items():
         filtered_lines = []
         # Loop through each line in lines_list
         for line_obj in lines_list:
@@ -64,4 +64,5 @@ def tfidfVector(ieee_paper_data,classified_data,all_lines):
                     filtered_lines.append(line_obj.getline())
         # Update filtered_data with the filtered lines for the section
         filtered_data[section] = ".".join(filtered_lines)
+
     return filtered_data
