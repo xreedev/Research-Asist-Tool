@@ -1,22 +1,21 @@
-import ppt as PT  # Module for PPT generation
-import dataProcesser as DP  # Module for preprocessing data
-import TFIDF as TI  # Module for TF IDF algorithm
-import data as DT  # Module for retrieving data for processing
-import tts as TS  # Module for converting text to speech
-import pdfextract as PE  # Module for extracting data from PDF
-# import BART as BRT  # Module for summarizing data using BART model
+import pdf_util as pdf
+import ppt_util as ppt
+import text_speech as speech  # Corrected the import statement
 
-stop_words = DT.stop_words  # this contains non-important terms to be removed
+# Path to the PDF file
+pdf_path = "C:/Users/JAFAR/Downloads/Summarization_of_Scientific_Paper_Through_Reinforcement_Ranking_on_Semantic_Link_Network.pdf"
 
-dataset = PE.getText("sample.pdf")  # extract content from pdf
+# Extract text from the PDF file
+text = pdf.pdf_to_text(pdf_path)
 
-Summarized_data_TFIDF = TI.tfidfVectorise(dataset, DP.getAllLines(dataset), DT.stop_words, 0.5)  # TF IDF SUMMARIZATION
-print(Summarized_data_TFIDF)
-# Summarized_data = BRT.bartSummarize_dict(Summarized_data_TFIDF)  # BART SUMMARIZATION
-# print('BART DONE')
-for key in Summarized_data_TFIDF.keys():
-    print(Summarized_data_TFIDF[key])
-# TS.texttospeech(Summarized_data, "female")  # convert text to audio file
-#
-# # Create Presentation
-# PT.save_ppt("template.pptx", BRT.bartSummarize_dict(Summarized_data), "ARTIFICIAL INTELLIGENCE", DT.author_list)
+# Print the extracted text
+print(text)
+
+# Convert text to speech
+speech.text_to_speech_with_highlight(text)  # Corrected the function call
+
+# Create a PowerPoint presentation from the extracted text
+presentation = ppt.create_ppt(text)
+
+# Save the presentation to a file
+presentation.save("scientific_summary.pptx")
