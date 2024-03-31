@@ -1,7 +1,7 @@
 import dataProcesser as DP
 import TFIDF as TI
 import data
-import sciBERT as SB
+import BERT as SB
 
 ieee_paper_data=data.ieee_paper_data # contents of scientific paper
 stop_words=data.stop_words # this contains non-important terms to be removed
