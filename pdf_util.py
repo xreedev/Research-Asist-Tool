@@ -1,37 +1,63 @@
-import PyPDF2
+import requests
+from bs4 import BeautifulSoup
 
-def pdf_to_text(pdf_path):
-    sentence_list = []
-    text = ""
-    file = open(pdf_path, "rb")
+
+def fetch_paper_content(url):
     try:
-        # Create a PDF reader object
-        pdf_reader = PyPDF2.PdfReader(file)
+        # Send a GET request to the URL
+        response = requests.get(url)
 
-        # Iterate through each page
-        for page_num in range(len(pdf_reader.pages)):
-            # Extract text from the page
-            page = pdf_reader.pages[page_num]
-            text += page.extract_text()
+        # Check if the request was successful (status code 200)
+        if response.status_code == 200:
+            # Parse the HTML content of the page
+            soup = BeautifulSoup(response.text, 'html.parser')
+            print(soup)
 
-        # Split text into sentences
-        sentence_list = text.split("\n")
-        abstract_start_index = 0
-        for i in range(len(text)):
-            if "Abstract" in text[i]:
-                abstract_start_index = i
-                break
-        if abstract_start_index !=0:
-            abstract = ""
-            for i in range(abstract_start_index + 1, len(text)):
-                if text[i].strip():
-                    abstract += text[i] + " "
-                else:
-                    break
-            abstract = abstract.strip()
+            # Extract the title
+            title = soup.find('h1', class_='document-title').text.strip()
+
+            # Extract the abstract
+            abstract = soup.find('div', class_='abstract-text').text.strip()
+
+            # Extract the authors
+            authors = [author.text.strip() for author in soup.select('.authors-list .author')]
+
+            # Extract the publication date
+            pub_date = soup.find('span', class_='publish-date').text.strip()
+
+            # Extract the DOI
+            doi = soup.find('span', class_='epub-section__doi').text.strip()
+
+            # Return the extracted information
+            return {
+                'title': title,
+                'abstract': abstract,
+                'authors': authors,
+                'publication_date': pub_date,
+                'doi': doi
+            }
         else:
-            abstract = ""
-    finally:
-        file.close()
+            print("Failed to fetch the page:", response.status_code)
+            return None
+    except Exception as e:
+        print("An error occurred while fetching the page:", str(e))
+        return None
 
-    return sentence_list,abstract
+
+if __name__ == "__main__":
+    # URL of the paper
+    paper_url = "https://ieeexplore.ieee.org/document/9845197"
+
+    # Fetch the paper content
+    paper_content = fetch_paper_content(paper_url)
+    print(paper_content)
+
+    if paper_content:
+        # Print the extracted information
+        print("Title:", paper_content['title'])
+        print("Authors:", ", ".join(paper_content['authors']))
+        print("Publication Date:", paper_content['publication_date'])
+        print("DOI:", paper_content['doi'])
+        print("Abstract:", paper_content['abstract'])
+    else:
+        print("Failed to fetch paper content.")
