@@ -1,23 +1,35 @@
-# research-reimagined
-Overview
+# Scientific Paper Summarizer
 
-Reimagined Science is an innovative project designed to simplify the consumption of scientific research by providing summarization, podcast generation, and presentation creation functionalities. It aims to assist researchers, academics, and students in accessing and understanding complex scientific data more efficiently.
+The Scientific Paper Summarizer is a tool designed to aid in the summarization of scientific papers, enabling users to quickly extract key information and generate concise summaries. It employs advanced natural language processing techniques to analyze the content of papers and distill essential insights.
 
-Key Features
-Paper Summarization: Accesses scientific papers via the ArXiv API and generates concise summaries.
-Podcast Generation: Converts summarized content into audio podcasts using Google Cloud Text-to-Speech.
-Presentation Creation: Automatically generates PowerPoint presentations from the summarized data.
-Technologies Used
-Backend (Python): Implements paper summarization, podcast generation, and presentation creation.
-Frontend (React): Provides a user-friendly interface for interaction and data visualization.
-ArXiv API: Enables access to scientific papers and metadata for summarization.
-Google Cloud Text-to-Speech: Converts text into natural-sounding speech for podcast generation.
+## Features:
 
-Contributors
-Sreedev TS 
-Sharon T Saju 
-Jafar N 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+- **Automated Text Mining:** Utilizes TF-IDF algorithm to extract relevant text segments from scientific papers.
+  
+- **Content Generation:** Employs BART (Bidirectional and Auto-Regressive Transformers) model for generating comprehensive summaries from mined text segments.
 
-Feel free to modify this README according to your project's specific details and requirements.
+- **PowerPoint Presentation:** Integrates with the Python `pptx` library to create visually appealing PowerPoint slides containing the summarized content.
+
+## Usage:
+
+1. **Setup:**
+   - Clone the repository and install the required dependencies.
+
+2. **Pre-trained Models:**
+   - Download pre-trained BART models and configure the `transformers` library accordingly.
+
+3. **Summarization:**
+   - Run the summarization script, providing the path to the input scientific paper.
+
+4. **Output:**
+   - View the generated PowerPoint presentation (`summary.pptx`) containing the summarized content.
+
+## Contribution:
+
+Jafar N,Sharon T Saju,Sreedev TS
+
+## License:
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
