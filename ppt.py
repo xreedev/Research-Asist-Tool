@@ -1,7 +1,6 @@
 from pptx import Presentation
 # This function adds the required text to the required row
 def setText(shape, text):
-    print(len(shape.text_frame.paragraphs),len(shape.text_frame.paragraphs[0].runs))
     shape.text_frame.paragraphs[0].runs[0].text = text[0]
     shape.text_frame.paragraphs[2].runs[0].text = text[1]
     shape.text_frame.paragraphs[4].runs[0].text = text[2]
@@ -37,12 +36,12 @@ def save_ppt(presentation_path,dict,title_name,author_list):
     discussion = prs.slides[5]
     conclusion = prs.slides[6]
 
-    setTITAuth(title_slide,title_name,author_list)
+    setTITAuth(title_slide,title_name,author_list) # Set the author name and title in first slide
 
-    modifyIntro(intro,dict['Introduction'].split("."))
-    modifyWMRD(rel_work,dict['Related Work'].split("."))
+    modifyIntro(intro,dict['Introduction'].split(".")) #modify each part of slides with required text
+    modifyWMRD(rel_work,dict['Related Work'].split(".")) #split the string into sentences and store in list and set that text on slide
     modifyWMRD(methodology,dict['Methodology'].split("."))
     modifyWMRD(results,dict['Results'].split("."))
     modifyWMRD(discussion,dict['Discussion'].split("."))
     modifyConcr(conclusion,dict['Conclusion'].split("."))
-    prs.save("new.pptx")
+    prs.save("new.pptx") #save ppt
