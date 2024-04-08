@@ -22,8 +22,8 @@ sections = "\n0.Introduction\n1.Related Work\n2.Methodology\n3.Discussion\n4.Con
 def classify(ieee_paper_data):
     classified_data=re.split(r"\b\d+\.\s*(?:Introduction|Related Work|Methodology|Results|Discussion|Conclusion)",ieee_paper_data)[1:]
     classified_dataset = {"Introduction": classified_data[0], "Related Work": classified_data[1],
-                          "Methodology": classified_data[2], "Discussion": classified_data[3],
-                          "Conclusion": classified_data[4]}
+                          "Methodology": classified_data[2], "Results": classified_data[3],
+                          "Discussion": classified_data[4],"Conclusion": classified_data[5]}
 
 
     return classified_dataset
