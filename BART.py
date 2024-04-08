@@ -6,7 +6,7 @@ tokenizer = BartTokenizer.from_pretrained(model_name)
 model = BartForConditionalGeneration.from_pretrained(model_name)
 
 
-def bertSummarize_dict(input_dict):
+def bartSummarize_dict(input_dict):
     """
     Summarizes each value in the input dictionary and returns a new dictionary with summaries.
 
