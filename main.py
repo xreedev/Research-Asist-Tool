@@ -10,7 +10,7 @@ stop_words = DT.stop_words  # this contains non-important terms to be removed
 classified_dataset = DP.classify(ieee_paper_data)  # classified data
 clean_dataset = DP.cleanData(ieee_paper_data, stop_words)  # classified data without stopwords
 
-Summarized_data = TI.tfidfVectorise(classified_dataset, DP.getAllLines(ieee_paper_data), DT.stop_words, 0.5)# TF IDF SUMMARIZATION
+Summarized_data = TI.tfidfVectorise(classified_dataset, DP.getAllLines(ieee_paper_data), DT.stop_words, 0.5) # TF IDF SUMMARIZATION
 
 PT.save_ppt("template.pptx",BRT.bartSummarize_dict(Summarized_data),"ARTIFICIAL INTELLIGENCE",DT.author_list) # BART SUMMARIZATION
 
