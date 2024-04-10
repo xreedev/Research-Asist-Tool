@@ -29,7 +29,7 @@ The Scientific Paper Summarizer is a tool designed to aid in the summarization o
 
 ### Output:
 
-- View the generated PowerPoint presentation (summary.pptx) containing the summarized content.
+- View the generated PowerPoint presentation (summary.pptx) containing the summarized content as well as audio file (audio.mp3).
 
 ## Contribution:
 
