@@ -44,4 +44,4 @@ def save_ppt(presentation_path,dict,title_name,author_list):
     modifyWMRD(results,dict['Results'].split("."))
     modifyWMRD(discussion,dict['Discussion'].split("."))
     modifyConcr(conclusion,dict['Conclusion'].split("."))
-    prs.save("new.pptx") #save ppt
+    prs.save("Outputs//new.pptx") #save ppt
