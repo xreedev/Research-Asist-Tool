@@ -29,6 +29,8 @@ def setTITAuth(title_slide,title_name,author_list): #This fucntion is used to ad
 def save_ppt(presentation_path,dict,title_name,author_list):
     prs = Presentation(presentation_path)
     title_slide = prs.slides[0] #Represent each slide in ppt
+
+
     intro=prs.slides[1]
     rel_work= prs.slides[2]
     methodology= prs.slides[3]
@@ -38,10 +40,10 @@ def save_ppt(presentation_path,dict,title_name,author_list):
 
     setTITAuth(title_slide,title_name,author_list) # Set the author name and title in first slide
 
-    modifyIntro(intro,dict['Introduction'].split(".")) #modify each part of slides with required text
-    modifyWMRD(rel_work,dict['Related Work'].split(".")) #split the string into sentences and store in list and set that text on slide
-    modifyWMRD(methodology,dict['Methodology'].split("."))
-    modifyWMRD(results,dict['Results'].split("."))
-    modifyWMRD(discussion,dict['Discussion'].split("."))
-    modifyConcr(conclusion,dict['Conclusion'].split("."))
-    prs.save("Outputs//new.pptx") #save ppt
+    modifyIntro(intro,dict['INTRODUCTION'].split(".")) #modify each part of slides with required text
+    modifyWMRD(rel_work,dict['REFERENCES'].split(".")) #split the string into sentences and store in list and set that text on slide
+    modifyWMRD(methodology,dict['METHODOLOGY OF RESEARCH'].split("."))
+    modifyWMRD(results,dict['BACKGROUND OF RESEARCH'].split("."))
+    modifyWMRD(discussion,dict['FUTURE DIRECTIONS'].split("."))
+    modifyConcr(conclusion,dict['CONCLUSION'].split("."))
+    prs.save("Outputs\\new.pptx") #save ppt

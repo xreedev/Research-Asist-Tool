@@ -1,5 +1,8 @@
 import requests
-def texttospeech(text,reqd):
+def texttospeech(Summarized_data,reqd):
+	text = ""
+	for values in Summarized_data.values():
+		text += values
 
 	url = "https://realistic-text-to-speech.p.rapidapi.com/v3/generate_voice_over_v2"
 
