@@ -1,32 +1,22 @@
-import pdf_util as pdf
-import ppt_util as ppt
-import pubmedAPI as pm
+import ppt as PT  # Module for PPT generation
+import dataProcesser as DP  # Module for preprocessing data
+import TFIDF as TI  # Module for TF IDF algorithm
+import data as DT  # Module for retrieving data for processing
+import tts as TS  # Module for converting text to speech
+import pdfextract as PE  # Module for extracting data from PDF
+import BART as BRT  # Module for summarizing data using BART model
 
-# Path to the PDF file
-pdf_path = "C:\\Users\\dell\\Pictures\\Desktop\\btech\\Main Project\\AI.pdf"
+stop_words = DT.stop_words  # this contains non-important terms to be removed
 
-# Extract text from the PDF file
-#text,abs = pdf.pdf_to_text(pdf_path)
+dataset = PE.getText("sample.pdf")  # extract content from pdf
 
-# Print the extracted text
-#print(text,"\n",abs)
-url = "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC10415512/unicode"
-i=0
-# Extract full text
-full_text = pm.extract_full_text(url)
-if full_text:
-    print("Full Text:")
-    for text in full_text:
-        print(i,text)
-        i=i+1
-else:
-    print("No full text extracted")
-
-
-# Create a PowerPoint presentation from the extracted text
-#presentation = ppt.create_ppt(text)
-
-# Save the presentation to a file
-#presentation.save("C:\\Users\\dell\\Pictures\\Desktop\\btech\\Main Project\\scientificsummary.pptx")
-
-
+Summarized_data_TFIDF = TI.tfidfVectorise({"ABSTRACT":dataset["ABSTRACT"]}, DP.getAllLines(dataset), DT.stop_words, 0.5)  # TF IDF SUMMARIZATION
+print("TF IDF DONE")
+Summarized_data = BRT.bartSummarize_dict(Summarized_data_TFIDF)  # BART SUMMARIZATION
+# print('BART DONE')
+for key in Summarized_data["ABSTRACT"].split("."):
+    print(key)
+# TS.texttospeech(Summarized_data, "female")  # convert text to audio file
+#
+# # Create Presentation
+# PT.save_ppt("template.pptx", BRT.bartSummarize_dict(Summarized_data), "ARTIFICIAL INTELLIGENCE", DT.author_list)
