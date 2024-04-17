@@ -33,10 +33,11 @@ def calctfidf(line, word, all_lines):
     total = (tf * net_idf) / 100
     return round(total, 3)
 
-def tfidfVectorise(clean_data, all_lines, stop_words,benchmark):
+def tfidfVectorise(clean_data, stop_words,benchmark):
     lines_list = []
 
     for value in clean_data.values():
+        all_lines=value.split(".")
         sec_lines = value.split(".")  # Split data into sentences
         for lines in sec_lines:
             total_tfidf = 0
