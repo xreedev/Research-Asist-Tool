@@ -1,17 +1,31 @@
 from transformers import BartTokenizer, BartForConditionalGeneration
-print("BART INITIALIZED")
-# Load the BART model and tokenizer
-model_name = "facebook/bart-large-cnn"
+import os
 
-print("TOKENIZER LOADING....")
-tokenizer = BartTokenizer.from_pretrained(model_name)
-print("TOKENIZER LOADED")
-print("MODEL LOADING....")
-model = BartForConditionalGeneration.from_pretrained(model_name)
-print("MODEL LOADED")
+# Define the paths for saving/loading tokenizer and model
+tokenizer_path = "bart_tokenizer"
+model_path = "bart_model"
+
+if os.path.exists(tokenizer_path) and os.path.exists(model_path):
+    # Load the tokenizer and model from the saved files
+    print("Loading tokenizer and model from saved files...")
+    tokenizer = BartTokenizer.from_pretrained(tokenizer_path)
+    model = BartForConditionalGeneration.from_pretrained(model_path)
+else:
+    # Load the BART model and tokenizer
+    print("Initializing BART model and tokenizer...")
+    model_name = "facebook/bart-large-cnn"
+    tokenizer = BartTokenizer.from_pretrained(model_name)
+    model = BartForConditionalGeneration.from_pretrained(model_name)
+
+    # Save the tokenizer and model for future use
+    tokenizer.save_pretrained(tokenizer_path)
+    model.save_pretrained(model_path)
+
+print("BART initialized")
 
 
 def bartSummarize_dict(input_dict):
+    print(input_dict)
     """
     Summarizes each value in the input dictionary and returns a new dictionary with summaries.
 
@@ -26,15 +40,12 @@ def bartSummarize_dict(input_dict):
     # Iterate over each key-value pair in the input dictionary
     for key, value in input_dict.items():
         # Tokenize the value (paper text)
-        print('TOKENIZING INPUT')
         inputs = tokenizer.encode_plus(value, return_tensors="pt", max_length=1024, truncation=True)
         print("INPUT TOKENIZED")
-        print("ENCODING.... ")
         # Generate summary
         summary_ids = model.generate(inputs["input_ids"], max_length=250, min_length=150, length_penalty=2.0,
                                      num_beams=5, early_stopping=True)
         print("ENCODED")
-        print("DECODING....")
         summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
         print("DECODED")
         # Store the summary in the new dictionary with the same key

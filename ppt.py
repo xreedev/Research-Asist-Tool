@@ -39,11 +39,18 @@ def save_ppt(presentation_path,dict,title_name,author_list):
     conclusion = prs.slides[6]
 
     setTITAuth(title_slide,title_name,author_list) # Set the author name and title in first slide
+    if 'INTRODUCTION' in dict:
+        modifyIntro(intro, dict['INTRODUCTION'].split("."))  # Modify each part of slides with required text
+    if 'ABSTRACT' in dict:
+        modifyWMRD(rel_work, dict['ABSTRACT'].split(
+            "."))  # Split the string into sentences and store in list and set that text on slide
+    if 'RESEARCH METHODS' in dict:
+        modifyWMRD(methodology, dict['RESEARCH METHODS'].split("."))
+    if 'RESULTS' in dict:
+        modifyWMRD(results, dict['RESULTS'].split("."))
+    if 'DISCUSSION' in dict:
+        modifyWMRD(discussion, dict['DISCUSSION'].split("."))
+    if 'CONCLUSION' in dict:
+        modifyConcr(conclusion, dict['CONCLUSION'].split("."))  # Change all of these like that
 
-    modifyIntro(intro,dict['INTRODUCTION'].split(".")) #modify each part of slides with required text
-    modifyWMRD(rel_work,dict['REFERENCES'].split(".")) #split the string into sentences and store in list and set that text on slide
-    modifyWMRD(methodology,dict['METHODOLOGY OF RESEARCH'].split("."))
-    modifyWMRD(results,dict['BACKGROUND OF RESEARCH'].split("."))
-    modifyWMRD(discussion,dict['FUTURE DIRECTIONS'].split("."))
-    modifyConcr(conclusion,dict['CONCLUSION'].split("."))
     prs.save("Outputs\\new.pptx") #save ppt

@@ -2,3 +2,4 @@ transformers
 python-pptx
 pymupdf
 fitz
+spacy
