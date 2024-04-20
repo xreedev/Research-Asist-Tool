@@ -3,3 +3,4 @@ python-pptx
 pymupdf
 fitz
 spacy
+flask

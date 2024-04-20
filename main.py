@@ -2,7 +2,7 @@ import ppt as PT  # Module for PPT generation
 import TFIDF as TI  # Module for TF IDF algorithm
 import data as DT  # Module for retrieving data for processing
 import tts as TS  # Module for converting text to speech
-import ieee as PE  # Module for extracting data from PDF
+import webcrawler as PE  # Module for extracting data from PDF
 import BART as BRT  # Module for summarizing data using BART model
 stop_words = DT.stop_words  # this contains non-important terms to be removed
 
