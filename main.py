@@ -24,8 +24,9 @@ dataset.pop('Title')
 Summarized_data_TFIDF = TI.tfidfVectorise(dataset, DT.stop_words, 0.35)  # TF IDF SUMMARIZATION
 print("TF IDF DONE")
 for key in Summarized_data_TFIDF.keys():
-    if Summarized_data_TFIDF[key]=='':
-        Summarized_data_TFIDF.pop(key)
+    if Summarized_data_TFIDF[key]=="":
+      blank=key
+Summarized_data_TFIDF.pop(blank)
 Summarized_data = BRT.bartSummarize_dict(Summarized_data_TFIDF)  # BART SUMMARIZATION
 for key in Summarized_data.keys():
     print(key,Summarized_data[key].split("."))
