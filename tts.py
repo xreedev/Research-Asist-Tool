@@ -39,10 +39,7 @@ def texttospeech(Summarized_data, reqd):
         if response.ok:
             link = response.json()[0]["link"]
             resp = requests.get(link)
-            audio_path = f"Outputs//audio_{reqd}_{section_title}.mp3"
-            with open(audio_path, "wb") as f:
-                f.write(resp.content)
-            audio_paths.append(audio_path)
+            audio_paths.append(resp.content)
         else:
             print(f"Error in {reqd} voice request for {section_title}:", response.text)
 
@@ -50,10 +47,8 @@ def texttospeech(Summarized_data, reqd):
 
 def combine_audio_files(audio_paths, output_file):
     with open(output_file, "wb") as output:
-        for audio_file in audio_paths:
-            with open(audio_file, "rb") as f:
-                output.write(f.read())
-            os.remove(audio_file)  # Remove individual audio files after combining
+        for audio_data in audio_paths:
+            output.write(audio_data)
 
 # # Test the function
 # Summarized_data = {
@@ -66,5 +61,5 @@ def combine_audio_files(audio_paths, output_file):
 #     "DATA_ANALYSIS": "Data analysis involves examining, cleaning, transforming, and modeling data to discover useful information, inform conclusions, and support decision-making.",
 #     "REFERENCES": "References provide details of the sources cited in the research paper, allowing readers to locate the original works."
 # }
-# audio_paths = texttospeech(Summarized_data, "female")  # Convert text to audio files
-# combine_audio_files(audio_paths, "Outputs\\combined_audio.mp3")  # Combine audio files into one
+# audio_data = texttospeech(Summarized_data, "female")  # Convert text to audio files
+# combine_audio_files(audio_data, "combined_audio.mp3")  # Combine audio files into one
