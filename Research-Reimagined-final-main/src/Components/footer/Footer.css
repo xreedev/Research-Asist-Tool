@@ -1,0 +1,12 @@
+/* Footer.css */
+.footer {
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    padding: 15px 0;
+  }
+  .text-muted{
+    color: black;
+    font-weight: 600;
+  }

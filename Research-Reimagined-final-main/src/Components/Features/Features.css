@@ -1,0 +1,14 @@
+/* Features.css */
+.feature-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+.container-border {
+  border: 1px solid white;
+  padding: 35px; /* Adjust the padding value as needed */
+}

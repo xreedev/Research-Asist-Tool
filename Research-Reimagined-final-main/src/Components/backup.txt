@@ -1,0 +1,261 @@
+import React from 'react';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import CustomNavbar from '../navbar/Navbar';
+import Info from '../info/Info';
+import Footer from '../footer/Footer';
+import './About.css'; // Import local CSS file for About component styling
+
+const About = () => {
+  const sections = [
+    {
+      title: "Our Mission",
+      content: "At Scientific Summarizer, our mission is to democratize knowledge by providing concise, easy-to-understand summaries of scientific papers and articles. We believe that everyone should have access to the latest research findings, regardless of their background or expertise."
+    },
+    {
+      title: "How It Works",
+      content: "Using cutting-edge natural language processing technology, our app analyzes scientific texts and generates clear and concise summaries. Whether you're a student, researcher, or simply curious about the latest discoveries, Scientific Summarizer is your gateway to understanding complex scientific concepts without the jargon."
+    },
+    {
+      title: "Meet the Team",
+      content: (
+        <ul>
+          <li>Dr. Emily Smith (Founder & CEO): A renowned researcher in natural language processing, Dr. Smith leads our team with her expertise in machine learning and AI.</li>
+          <li>John Doe (Head of Product): With a background in user experience design, John ensures that our app is intuitive and user-friendly.</li>
+          <li>Sarah Lee (Content Manager): Sarah curates the content on our platform, ensuring that our summaries are accurate and informative.</li>
+        </ul>
+      )
+    },
+    {
+      title: "Contact Us",
+      content: "Have questions or feedback? We'd love to hear from you! Reach out to us at contact@scientificsummarizer.com and let us know how we can improve your experience with our app."
+    }
+  ];
+
+  return (
+    <>
+      <CustomNavbar />{/* Pass the background color and text color as props */}
+      <div className="about-bg"> {/* Use a custom class for the background */}
+        <Container fluid>
+          <Row className="justify-content-center">
+            <Col md={10}>
+              <Card className="bg-transparent text-black rounded-lg shadow-lg">
+                <Card.Body>
+                  <h2 className="text-center mb-4">About Us</h2>
+                  {sections.map((section, index) => (
+                    <Card className={index % 2 === 0 ? "bg-white text-black mb-4" : "bg-white text-black mb-4"}>
+                      <Card.Body>
+                        <h4 className="mt-4">{section.title}</h4>
+                        <div>{section.content}</div>
+                      </Card.Body>
+                    </Card>
+                  ))}
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+          <Info />
+        </Container>
+      </div>
+      <Footer />
+    </>
+  );
+};
+
+export default About;
+
+
+
+
+// Navbar.js
+import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import { Link, useLocation } from 'react-router-dom'; // Import Link and useLocation from react-router-dom
+import './Navbar.css';
+
+function CustomNavbar({ textColor, bgColor }) {
+  const location = useLocation();
+  const isAboutPage = location.pathname === '/about-us';
+
+  return (
+    <Navbar style={{ backgroundColor: bgColor }} variant="dark" className="custom-navbar" expand="lg" fixed="top">
+      <Container fluid>
+        <Navbar.Brand as={Link} to="/" href="#home" style={{ color: textColor }}>Research Reimagined</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="ms-auto me-3">
+            <Nav.Link as={Link} to="/about-us" className="nav-link me-3" style={{ color: textColor }}>About Us</Nav.Link>
+            <Nav.Link href="#features" className="nav-link me-3" style={{ color: textColor }}>Sign up</Nav.Link>
+            <Nav.Link href="#pricing" className="nav-link" style={{ color: textColor }}>Log in</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+}
+
+export default CustomNavbar;
+
+
+
+
+
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import CustomNavbar from '../navbar/Navbar';
+import CustomButton from '../button/Button';
+import TextContent from '../TextContent/TextContent';
+import Features from '../Features/Features';
+import Footer from '..//footer/Footer';
+import Info from '../info/Info';
+import TextInput from '../text/TextInput';
+import PDFInput from '../pdf/PDFInput';
+import URLInput from '../url/URLInput';
+import { Container, Row, Col } from 'react-bootstrap';
+import './Landing.css';
+
+const Landing = () => {
+  const [activeComponent, setActiveComponent] = useState(null);
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
+
+  const handlePDFClick = (componentName) => {
+    setActiveComponent(componentName);
+    setIsButtonClicked(true);
+  };
+
+  const handleURLClick = (componentName) => {
+    setActiveComponent(componentName);
+    setIsButtonClicked(true);
+  };
+
+  const handleTextClick = (componentName) => {
+    setActiveComponent(componentName);
+    setIsButtonClicked(false);
+  };
+
+  const renderComponent = () => {
+    switch (activeComponent) {
+      case 'PDF':
+      case 'URL':
+        return (
+          <Container fluid> {/* Add fluid prop to make it full width */}
+            <Row className="justify-content-center">
+              <Col xs={12} md={8} lg={6} style={{ marginTop: '20px', marginBottom: '30px' }}>
+                {activeComponent === 'PDF' && <PDFInput />}
+                {activeComponent === 'URL' && <URLInput />}
+              </Col>
+            </Row>
+            {isButtonClicked && <hr style={{ border: 'none', borderBottom: '1px solid white', width: '100%' }} />}
+            {isButtonClicked && <Info />}
+            <Footer />
+          </Container>
+        );
+      case 'TEXT':
+        return (
+          <Container fluid> {/* Add fluid prop to make it full width */}
+            <Row className="justify-content-center">
+              <Col xs={12} md={8} lg={6} style={{ marginTop: '20px', marginBottom: '30px' }}>
+                <TextInput />
+              </Col>
+            </Row>
+            <hr style={{ border: 'none', borderBottom: '1px solid white', width: '100%' }} />
+            <Info />
+            <Footer />
+          </Container>
+        );
+      default:
+        return (
+          <>
+            <TextContent />
+            <CustomButton onPDFClick={handlePDFClick} onURLClick={handleURLClick} onTextClick={handleTextClick} />
+            <Features />
+            <Info />
+            <Footer />
+          </>
+        );
+    }
+  };
+
+  return (
+    <>
+      <CustomNavbar />
+      <div
+        style={{
+          backgroundColor: 'black',
+          color: 'white',
+          paddingTop: '60px',
+          minHeight: '100vh',
+          overflowX: 'hidden',
+          position: 'relative',
+        }}
+      >
+        {renderComponent()}
+      </div>
+    </>
+  );
+};
+
+export default Landing;
+
+
+
+
+
+// App.js
+import React, { useState } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import LoginForm from './Components/login/login';
+import Landing from './Components/Landing/Landing';
+import About from './Components/About/About';
+
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+  };
+
+  return (
+    <Routes>
+      <Route path="/" element={isLoggedIn ? <Navigate to="/home" /> : <LoginForm onLoginSuccess={handleLoginSuccess} />} />
+      <Route path="/home" element={isLoggedIn ? <Landing /> : <Navigate to="/" />} />
+      <Route path="/about-us" element={<About />} /> {/* Route for About Us */}
+    </Routes>
+  );
+}
+
+export default App;
+
+
+
+
+// Navbar.js
+import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import { Link, useLocation } from 'react-router-dom'; // Import Link and useLocation from react-router-dom
+import './Navbar.css';
+
+function CustomNavbar({ textColor, bgColor }) {
+  const location = useLocation();
+  const isAboutPage = location.pathname === '/about-us';
+
+  return (
+    <Navbar style={{ backgroundColor: bgColor }} variant="dark" className="custom-navbar" expand="lg" fixed="top">
+      <Container fluid>
+        <Navbar.Brand as={Link} to="/" href="#home" style={{ color: textColor }}>Research Reimagined</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="ms-auto me-3">
+            <Nav.Link as={Link} to="/about-us" className="nav-link me-3" style={{ color: textColor }}>About Us</Nav.Link>
+            <Nav.Link href="#features" className="nav-link me-3" style={{ color: textColor }}>Log Out</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+}
+
+export default CustomNavbar;
