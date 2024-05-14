@@ -32,4 +32,14 @@ for key in Summarized_data.keys():
     print(key,Summarized_data[key].split("."))
 TS.texttospeech(Summarized_data,"female")  # convert text to audio file
 # Create Presentation
+# Summarized_data = {
+#     "INTRODUCTION": "This is the introduction. This is the introduction.It provides an overview of the topic.",
+#     "ABSTRACT": "This is the abstract.This is the abstract. It summarizes the main points of the research.",
+#     "METHOD": "This is the abstract.This is the abstract.This section outlines the methodology used in the research process.",
+#     "RESULTS": "This is the abstract.This is the abstract.Here are the results obtained from the research analysis.",
+#     "DISCUSSION": "This is the abstract.This is the abstract.This section discusses the implications and interpretations of the results.",
+#     "CONCLUSION": "This is the abstract.This is the abstract.In conclusion, the research findings are summarized and final remarks are provided.",
+#     "DATA_ANALYSIS": "This is the abstract.Data analysis involves examining, cleaning, transforming, and modeling data to discover useful information, inform conclusions, and support decision-making.This is the abstract.",
+#     "REFERENCES": "This is the abstract.References provide details of the sources cited in the research paper, allowing readers to locate the original works.This is the abstract."
+# }
 PT.save_ppt("template.pptx", Summarized_data,"--TITLE--", DT.author_list)

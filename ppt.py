@@ -42,8 +42,7 @@ def save_ppt(presentation_path,dict,title_name,author_list):
     if 'INTRODUCTION' in dict:
         modifyIntro(intro, dict['INTRODUCTION'].split("."))  # Modify each part of slides with required text
     if 'ABSTRACT' in dict:
-        modifyWMRD(rel_work, dict['ABSTRACT'].split(
-            "."))  # Split the string into sentences and store in list and set that text on slide
+        modifyWMRD(rel_work, dict['ABSTRACT'].split( "."))  # Split the string into sentences and store in list and set that text on slide
     if 'RESEARCH METHODS' in dict:
         modifyWMRD(methodology, dict['RESEARCH METHODS'].split("."))
     if 'RESULTS' in dict:
@@ -52,5 +51,4 @@ def save_ppt(presentation_path,dict,title_name,author_list):
         modifyWMRD(discussion, dict['DISCUSSION'].split("."))
     if 'CONCLUSION' in dict:
         modifyConcr(conclusion, dict['CONCLUSION'].split("."))  # Change all of these like that
-
-    prs.save("Outputs\\new.pptx") #save ppt
+    prs.save("Outputs\\new11.pptx") #save ppt
