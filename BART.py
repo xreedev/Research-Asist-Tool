@@ -25,16 +25,6 @@ print("BART initialized")
 
 
 def bartSummarize_dict(input_dict):
-    print(input_dict)
-    """
-    Summarizes each value in the input dictionary and returns a new dictionary with summaries.
-
-    Args:
-    - input_dict (dict): A dictionary containing keys and corresponding values as strings.
-
-    Returns:
-    - dict: A new dictionary with keys unchanged and values replaced by their summaries.
-    """
     summarized_dict = {}
 
     # Iterate over each key-value pair in the input dictionary

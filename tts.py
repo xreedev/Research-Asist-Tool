@@ -2,6 +2,7 @@ import os
 import requests
 
 def texttospeech(Summarized_data, reqd):
+    print("tts on")
     url = "https://realistic-text-to-speech.p.rapidapi.com/v3/generate_voice_over_v2"
     headers = {
         "content-type": "application/json",
@@ -50,7 +51,7 @@ def combine_audio_files(audio_paths, output_file):
         for audio_data in audio_paths:
             output.write(audio_data)
 
-# # Test the function
+# Test the function
 # Summarized_data = {
 #     "INTRODUCTION": "This is the introduction. It provides an overview of the topic.",
 #     "ABSTRACT": "This is the abstract. It summarizes the main points of the research.",
@@ -62,4 +63,4 @@ def combine_audio_files(audio_paths, output_file):
 #     "REFERENCES": "References provide details of the sources cited in the research paper, allowing readers to locate the original works."
 # }
 # audio_data = texttospeech(Summarized_data, "female")  # Convert text to audio files
-# combine_audio_files(audio_data, "combined_audio.mp3")  # Combine audio files into one
+# combine_audio_files(audio_data, "Outputs\\combined_audio.mp3")  # Combine audio files into one
