@@ -68,12 +68,12 @@ const LoginForm = ({ onLoginSuccess }) => {
             <input type="checkbox" />
             Remember me
           </label>
-          <a href="#">Forgot password?</a>
+
         </div>
         <button type="submit" className="btn">Login</button>
         <div className="register-link" id="emailerrormsg">{emailErrorMsg}</div>
         <div className="register-link" id="pswderrorMsg">{passwordErrorMsg}</div>
-        <div className="register-link">Don't Have An Account? <Link to="/signup">Sign up</Link></div> {/* Use Link */}
+
       </form>
     </div>
   );
