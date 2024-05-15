@@ -60,7 +60,7 @@ def summarize():
 
 @app.route('/download_ppt', methods=['GET'])
 def download_ppt():
-    path = "Outputs/new.pptx"
+    path = "Outputs/new11.pptx"
     return send_file(path, as_attachment=True)
 
 @app.route('/download_audio', methods=['GET'])
