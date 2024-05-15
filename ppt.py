@@ -51,4 +51,4 @@ def save_ppt(presentation_path,dict,title_name,author_list):
         modifyWMRD(discussion, dict['DISCUSSION'].split("."))
     if 'CONCLUSION' in dict:
         modifyConcr(conclusion, dict['CONCLUSION'].split("."))  # Change all of these like that
-    prs.save("Outputs\\new11.pptx") #save ppt
+    prs.save("Outputs\\new.pptx") #save ppt
