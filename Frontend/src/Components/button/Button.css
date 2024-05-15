@@ -1,0 +1,13 @@
+.custom-button {
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    border-color: white;
+    margin: 0 40px;
+    padding: 15px 30px; /* Adjust padding to make the button larger */
+}
+
+.custom-button:hover {
+    background-color: white;
+    color: black;
+}

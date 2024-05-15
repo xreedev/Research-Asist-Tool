@@ -1,0 +1,8 @@
+.link-no-decoration {
+  text-decoration: none; /* Remove underline */
+  color: white; /* Change color to white */
+}
+
+.link-no-decoration:hover {
+  font-weight: bold; /* Increase font weight on hover */
+}
