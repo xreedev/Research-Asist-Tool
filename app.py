@@ -15,16 +15,6 @@ CORS(app)  # Add this line
 
 @app.route('/summarize', methods=['POST'])
 def summarize():
-    # Summarized_data = {
-    #     "INTRODUCTION": "This is the introduction. It provides an overview of the topic.",
-    #     "ABSTRACT": "This is the abstract. It summarizes the main points of the research.",
-    #     "METHOD": "This section outlines the methodology used in the research process.",
-    #     "RESULTS": "Here are the results obtained from the research analysis.",
-    #     "DISCUSSION": "This section discusses the implications and interpretations of the results.",
-    #     "CONCLUSION": "In conclusion, the research findings are summarized and final remarks are provided.",
-    #     "DATA_ANALYSIS": "Data analysis involves examining, cleaning, transforming, and modeling data to discover useful information, inform conclusions, and support decision-making.",
-    #     "REFERENCES": "References provide details of the sources cited in the research paper, allowing readers to locate the original works."
-    # }
     data = request.get_json()
     url = data['url']
 
@@ -60,7 +50,7 @@ def summarize():
 
 @app.route('/download_ppt', methods=['GET'])
 def download_ppt():
-    path = "Outputs/new11.pptx"
+    path = "Outputs/new.pptx"
     return send_file(path, as_attachment=True)
 
 @app.route('/download_audio', methods=['GET'])
