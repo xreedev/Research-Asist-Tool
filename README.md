@@ -1,10 +1,12 @@
-Certainly! Here's the revised README content with the addition of the Text-to-Speech feature and the removal of the example code:
 
 ---
 
-# Scientific Paper Summarizer
+# Scientific Paper Summarizer and Research Assist
 
-The Scientific Paper Summarizer is a tool designed to aid in the summarization of scientific papers, enabling users to quickly extract key information and generate concise summaries. It employs advanced natural language processing techniques to analyze the content of papers and distill essential insights.
+This website was designed to  help researchers and students help simplify understanding and working with
+scientific articles and research papers.This tool currently only wokrs for Springr non-mathematical papers 
+only.New versions will aim to add more papers and capabilities, all contributions are openly welcomed, in
+building a student and research friendly application.
 
 ## Features:
 
@@ -18,6 +20,9 @@ The Scientific Paper Summarizer is a tool designed to aid in the summarization o
 ### Setup:
 
 - Clone the repository and install the required dependencies.
+- python app.py to start python backend api
+- cd frontend
+- npm start to open website
 
 ### Pre-trained Models:
 
@@ -25,11 +30,11 @@ The Scientific Paper Summarizer is a tool designed to aid in the summarization o
 
 ### Summarization:
 
-- Run the summarization script, providing the path to the input scientific paper.
+- Run the summarization script, by providing the link through the React website.
 
 ### Output:
 
-- View the generated PowerPoint presentation (summary.pptx) containing the summarized content as well as audio file (audio.mp3).
+- View the  generated Summary , PowerPoint presentation (summary.pptx) containing the summarized content as well as audio file (audio.mp3).
 
 ## Contribution:
 
