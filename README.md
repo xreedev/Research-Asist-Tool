@@ -20,9 +20,20 @@ building a student and research friendly application.
 ### Setup:
 
 - Clone the repository and install the required dependencies.
-- python app.py to start python backend api
-- cd frontend
-- npm start to open website
+```
+pip install -r requirements.txt
+```
+- To start python backend api
+```
+python app.py
+```
+- To run React website
+```
+cd Frontend
+```
+```
+npm start
+```
 
 ### Pre-trained Models:
 
@@ -36,11 +47,12 @@ building a student and research friendly application.
 
 - View the  generated Summary , PowerPoint presentation (summary.pptx) containing the summarized content as well as audio file (audio.mp3).
 
+The Outputs folder will contain all the non-text outputs
 ## Contribution:
 
 - Jafar N
 - Sharon T Saju
-- Sreedev TS
+- Sreedev TS , xreedev@gmail.com
 
 ## License:
 
@@ -48,4 +60,3 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ---
 
-This updated README provides users with information about the Text-to-Speech feature integrated into the Scientific Paper Summarizer tool. Adjustments have been made to remove the example code and provide a clear overview of the tool's capabilities. Feel free to further customize the content to suit your project's requirements.
