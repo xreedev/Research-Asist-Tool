@@ -5,3 +5,4 @@ fitz
 spacy
 flask
 scispacy
+nmslib
