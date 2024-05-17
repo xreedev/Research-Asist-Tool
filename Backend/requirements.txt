@@ -6,3 +6,5 @@ spacy
 flask
 scispacy
 nmslib
+Flask
+Flask-CORS
