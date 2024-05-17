@@ -54,6 +54,20 @@ The Outputs folder will contain all the non-text outputs
 - Sharon T Saju
 - Sreedev TS , xreedev@gmail.com
 
+## Module Design
+
+app.py : Flask api to treat requests
+ppt.py : create ppt based on template.pptx
+BART.py : Module responsible for summarization using BART
+data.py :Used to store any data repetitively used
+dataProcesser.py : Used to remove stop words
+main.py:To test all backend features
+pdfextract.py: Used to extract text from pdfs(incomplete)
+TFIDF.py:Extractive summarization using TF-IDF algorithm
+tts.py : Test to speech module
+webcrawler.py:Webcrawl and parse data from springr articles
+
+
 ## License:
 
 This project is licensed under the MIT License. See the LICENSE file for details.
