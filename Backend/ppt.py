@@ -1,5 +1,6 @@
 from pptx import Presentation
 # This function adds the required text to the required row
+#the input to this module is a dictionary and output is a presentation with data added to respective slides
 def setText(shape, text):
     shape.text_frame.paragraphs[0].runs[0].text = text[0]
     shape.text_frame.paragraphs[2].runs[0].text = text[1]
