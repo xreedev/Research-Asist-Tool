@@ -1,6 +1,7 @@
 import os
 import requests
 #you can redisgn this module to use any api you want
+#the inpu to this module is a dictionary and output is all the values in dictionary appended and converted to audio
 def texttospeech(Summarized_data, reqd):
     print("tts on")
     url = "https://realistic-text-to-speech.p.rapidapi.com/v3/generate_voice_over_v2"
