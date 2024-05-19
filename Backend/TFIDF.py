@@ -1,4 +1,6 @@
 import data
+
+#the input to this module is a dictionary and output is all the extractive summaries of values in dictionary
 stop_words=data.stop_words
 def removeStopWords(line, stop_words):
     clean_line = ""
