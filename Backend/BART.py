@@ -2,6 +2,7 @@ from transformers import BartTokenizer, BartForConditionalGeneration
 import os
 
 # Define the paths for saving/loading tokenizer and model
+#the input to this module is a dictionary and output is all the abstractive summaries of values in dictionary
 tokenizer_path = "bart_tokenizer"
 model_path = "bart_model"
 
