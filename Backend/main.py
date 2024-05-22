@@ -8,11 +8,7 @@ stop_words = DT.stop_words  # this contains non-important terms to be removed
 
 dataset = PE.extract_article_sections("https://fbj.springeropen.com/articles/10.1186/s43093-024-00326-4")  # extract content from pdf)
 
-for key in dataset.keys():
-    if string_to_check in key:
-        keys_to_remove.append(key)
-for key in keys_to_remove:
-    dataset.pop(key)
+
 dataset.pop('Title')
 Summarized_data_TFIDF = TI.tfidfVectorise(dataset, DT.stop_words, 0.35)  # TF IDF SUMMARIZATION
 print("TF IDF DONE")
