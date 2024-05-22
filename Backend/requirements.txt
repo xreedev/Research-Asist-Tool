@@ -8,3 +8,4 @@ scispacy
 nmslib
 Flask
 Flask-CORS
+nmslib
