@@ -39,7 +39,6 @@ Research Assist Tool simplifies and summarizes scientific data, converts it into
 1. **Pre-trained Models**: Download and configure BART models.
 2. **Summarization**: Provide the link through the React website.
 3. **Output**: Access summaries, presentations, and audio files in the `Outputs` folder.
-.To add a file structure and data flow to your README file, we need to analyze the project files and their interactions. Here's a detailed structure for that section:
 
 ---
 
