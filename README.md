@@ -3,8 +3,6 @@
 
 # Research Assist Tool
 
-![Logo](link-to-logo-image)
-
 ## Overview
 
 Research Assist Tool simplifies and summarizes scientific data, converts it into audio podcasts, and creates PowerPoint presentations. Ideal for researchers, academics, and students.
