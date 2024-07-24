@@ -1,76 +1,118 @@
 
 ---
 
-# Scientific Paper Summarizer and Research Assist
+# Research Assist Tool
 
-This website was designed to  help researchers and students help simplify understanding and working with
-scientific articles and research papers.This tool currently only wokrs for Springr non-mathematical papers 
-only.New versions will aim to add more papers and capabilities, all contributions are openly welcomed, in
-building a student and research friendly application.
+![Logo](link-to-logo-image)
 
-## Features:
+## Overview
 
-- **Automated Text Mining**: Utilizes TF-IDF algorithm to extract relevant text segments from scientific papers.
-- **Content Generation**: Employs BART (Bidirectional and Auto-Regressive Transformers) model for generating comprehensive summaries from mined text segments.
-- **PowerPoint Presentation**: Integrates with the Python pptx library to create visually appealing PowerPoint slides containing the summarized content.
-- **Text-to-Speech**: Incorporates the Realistic Text to Speech API by VidLab for converting text summaries into natural-sounding speech, enhancing accessibility and user experience.
+Research Assist Tool simplifies and summarizes scientific data, converts it into audio podcasts, and creates PowerPoint presentations. Ideal for researchers, academics, and students.
 
-## Usage:
+## Features
 
-### Setup:
+- **Automated Text Mining**: Extracts relevant segments using the TF-IDF algorithm.
+- **Content Generation**: Summarizes with BART model.
+- **PowerPoint Presentation**: Creates slides with Python pptx.
+- **Text-to-Speech**: Converts summaries to audio using VidLab API.
 
-- Clone the repository and install the required dependencies.
-```
-pip install -r requirements.txt
-```
-- To start python backend api
-```
-python app.py
-```
-- To run React website
-```
-cd Frontend
-```
-```
-npm start
-```
+## Setup
 
-### Pre-trained Models:
+1. **Clone Repository**:
+    ```sh
+    git clone https://github.com/xreedev/Research-Asist-Tool.git
+    ```
+2. **Install Dependencies**:
+    ```sh
+    pip install -r requirements.txt
+    ```
+3. **Start Backend API**:
+    ```sh
+    python app.py
+    ```
+4. **Run Frontend**:
+    ```sh
+    cd Frontend
+    npm start
+    ```
 
-- Download pre-trained BART models and configure the transformers library accordingly.
+## Usage
 
-### Summarization:
-
-- Run the summarization script, by providing the link through the React website.
-
-### Output:
-
-- View the  generated Summary , PowerPoint presentation (summary.pptx) containing the summarized content as well as audio file (audio.mp3).
-
-The Outputs folder will contain all the non-text outputs
-## Contribution:
-
-- Jafar N
-- Sharon T Saju
-- Sreedev TS , xreedev@gmail.com
-
-## Module Design
-
-app.py : Flask api to treat requests
-ppt.py : create ppt based on template.pptx
-BART.py : Module responsible for summarization using BART
-data.py :Used to store any data repetitively used
-dataProcesser.py : Used to remove stop words
-main.py:To test all backend features
-pdfextract.py: Used to extract text from pdfs(incomplete)
-TFIDF.py:Extractive summarization using TF-IDF algorithm
-tts.py : Test to speech module
-webcrawler.py:Webcrawl and parse data from springr articles
-
-
-## License:
-
-This project is licensed under the MIT License. See the LICENSE file for details.
+1. **Pre-trained Models**: Download and configure BART models.
+2. **Summarization**: Provide the link through the React website.
+3. **Output**: Access summaries, presentations, and audio files in the `Outputs` folder.
+.To add a file structure and data flow to your README file, we need to analyze the project files and their interactions. Here's a detailed structure for that section:
 
 ---
 
+## File Structure
+
+```
+Research-Asist-Tool/
+│
+├── app.py                     # Backend API script
+├── requirements.txt           # Dependencies
+├── README.md                  # Project documentation
+│
+├── Frontend/                  # Frontend files
+│   ├── src/
+│   │   ├── App.js             # Main React component
+│   │   ├── index.js           # Entry point for React
+│   │   ├── components/        # React components
+│   │   ├── services/          # API service functions
+│   │   └── styles/            # CSS files
+│   ├── public/
+│   │   ├── index.html         # Main HTML file
+│   │   └── ...
+│   └── package.json           # Node.js dependencies
+│
+├── Models/                    # Pre-trained models
+│   ├── bart/                  # BART models
+│   ├── tf-idf/                # TF-IDF models
+│   └── ...
+│
+├── Outputs/                   # Generated outputs
+│   ├── summaries/             # Text summaries
+│   ├── presentations/         # PowerPoint files
+│   └── audio/                 # Audio files
+│
+└── Utils/                     # Utility scripts
+    ├── text_mining.py         # Text mining functions
+    ├── summarization.py       # Summarization functions
+    ├── ppt_creation.py        # PowerPoint generation
+    └── text_to_speech.py      # Text-to-speech conversion
+```
+
+## Data Flow
+
+1. **Text Mining**:
+    - **Input**: Scientific paper (PDF/URL)
+    - **Process**: Extracts key segments using `text_mining.py`
+    - **Output**: Relevant text segments
+
+2. **Summarization**:
+    - **Input**: Extracted text segments
+    - **Process**: Summarizes using BART model (`summarization.py`)
+    - **Output**: Summarized text
+
+3. **PowerPoint Creation**:
+    - **Input**: Summarized text
+    - **Process**: Generates slides using `ppt_creation.py`
+    - **Output**: PowerPoint file
+
+4. **Text-to-Speech**:
+    - **Input**: Summarized text
+    - **Process**: Converts to audio using `text_to_speech.py`
+    - **Output**: Audio file
+
+## Contribution
+
+- Jafar N
+- Sharon T Saju
+- Sreedev TS (xreedev@gmail.com)
+
+## License
+
+Licensed under the MIT License. See [LICENSE](link-to-license-file) for details.
+
+---
