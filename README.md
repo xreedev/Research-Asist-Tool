@@ -30,6 +30,7 @@ Research Assist Tool simplifies and summarizes scientific data, converts it into
     ```
 4. **Run Frontend**:
     ```sh
+    npm install
     cd Frontend
     npm start
     ```
