@@ -78,7 +78,7 @@ Research-Asist-Tool/
     ├── text_mining.py         # Text mining functions
     ├── summarization.py       # Summarization functions
     ├── ppt_creation.py        # PowerPoint generation
-    └── text_to_speech.py      # Text-to-speech conversion
+    └── text_to_speech.py      # Text to speech conversion
 ```
 
 ## Data Flow
