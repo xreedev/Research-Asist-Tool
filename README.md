@@ -109,8 +109,4 @@ Research-Asist-Tool/
 - Sharon T Saju
 - Sreedev TS (xreedev@gmail.com)
 
-## License
-
-Licensed under the MIT License. See [LICENSE](link-to-license-file) for details.
-
 ---
